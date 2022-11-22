@@ -7,7 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewIni
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
+  // con @Input recibe datos del padre
   @Input() img: string = '';
+  // con @Output envia datos del hijo al padre
   @Output() loaded = new EventEmitter<string>();
 
   imageDefault = './assets/no-photo.png';
