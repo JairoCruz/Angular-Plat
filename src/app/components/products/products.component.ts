@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../../models/product.model';
+import { Product, CreateProductDTO } from '../../models/product.model';
 
 import { StoreService } from 'src/app/services/store.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -47,6 +47,29 @@ export class ProductsComponent implements OnInit {
         this.toggleProductDetail();
         this.productChosen = data;
       });
+  }
+
+
+  createNewProduct() {
+    const product: CreateProductDTO = {
+      title: 'Nueva productJ',
+      description: 'nueva descripcion',
+      images: ['https://placeimg.com/640/480/any'],
+      price: 10000,
+      categoryId: 2,
+
+    }
+
+
+    this.productsService.create(product)
+    .subscribe(data => {
+      console.log('created', data);
+      // lo que hace unshift es agregar al array en la primera posicion
+      // lo que se esta devolviendo
+      this.products.unshift(data);
+    });
+
+
   }
 
   total = 0;
