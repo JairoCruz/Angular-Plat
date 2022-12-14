@@ -36,11 +36,37 @@ export class ProductsComponent implements OnInit {
    this.total = this.storeService.getTotal();
   }
 
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+
+  onShowDetail(id: string){
+    this.productsService.getProduct(id)
+      .subscribe(data => {
+        this.toggleProductDetail();
+        this.productChosen = data;
+      });
+  }
 
   total = 0;
   myShoppingCart: Product[] = [];
 
   products: Product[] = [];
+
+  showProductDetail = false;
+
+  productChosen: Product = {
+    id: '',
+    price: 0,
+    images: [],
+    title: '',
+    category: {
+      id: '',
+      name: '',
+    }, 
+    description: ''
+  };
 
  /* products: Product[] = [
     {
