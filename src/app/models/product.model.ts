@@ -20,3 +20,8 @@ export interface Product {
 export interface CreateProductDTO extends Omit<Product, 'id' | 'category'> {
     categoryId: number;
 }
+
+
+// Partial lo que hace es colocar el signo ? a todos los atributos
+// y lo que hacemos es extender de CreateProductDTO
+export interface UpdateProductDTO extends Partial<CreateProductDTO> { }
