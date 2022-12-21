@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Product, CreateProductDTO, UpdateProductDTO } from './../models/product.model';
 
@@ -16,17 +16,33 @@ export class ProductsService {
   ) { }
 
 
-    getAllProducts() {
+    getAllProducts(limit?: number, offset?: number) {
+
+      let params = new HttpParams();
+      if (limit && offset) {
+        params = params.set('limit', limit);
+        params= params.set('offset', limit);
+      }
+
       // Tipa el tipo de objetos que devolvera la solicitud
       
       //return this.http.get<Product[]>('https://fakestoreapi.com/products');
-      return this.http.get<Product[]>(this.apiUrl);
+      return this.http.get<Product[]>(this.apiUrl, { params });
     }
 
 
     getProduct(id: string){
       return this.http.get<Product>(`${this.apiUrl}/${id}`)
     }
+
+
+
+    getProductsByPage(limit: number, offset: number) {
+      return this.http.get<Product[]>(`${this.apiUrl}`, {
+        params: { limit, offset }
+      });
+    }
+
 
     // en este caso enviamos un dto y recivimos un objeto producto, esta es una flexibilidad que te brinda
     create (dto: CreateProductDTO) {
