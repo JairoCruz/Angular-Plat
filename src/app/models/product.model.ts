@@ -11,6 +11,10 @@ export interface Product {
     images: string[];
     description: string;
     category: Category;
+    // Este campo no viene en la respuesta de la peticion
+    // por eso se le coloca el signo. el dato se calculara del
+    // lado del frontend
+    taxes?: number;
 }
 
 
