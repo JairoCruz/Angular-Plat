@@ -22,6 +22,7 @@ export class ProductsComponent implements OnInit {
     .subscribe(data => {
       // console.log(data);
       this.products = data;
+      this.offset += this.limit;
     });
   }
 
@@ -43,10 +44,21 @@ export class ProductsComponent implements OnInit {
 
 
   onShowDetail(id: string){
+    this.statusDetail = 'loading';
+    // Esto es de muestra para ver el error que se muestra al enviar
+    // un id diferente
+    this.toggleProductDetail();
     this.productsService.getProduct(id)
       .subscribe(data => {
-        this.toggleProductDetail();
         this.productChosen = data;
+        this.statusDetail = "success"
+      }, response => {
+        // console.log(response.error.message);
+        console.log(response)
+        // Esta no es la mejor manera de mostrar error esto es
+        // solo para prueba
+        window.alert(response);
+        this.statusDetail = "error";
       });
   }
 
@@ -130,6 +142,7 @@ export class ProductsComponent implements OnInit {
 
   limit = 10;
   offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
  /* products: Product[] = [
     {
