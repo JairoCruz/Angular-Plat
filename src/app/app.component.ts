@@ -14,7 +14,7 @@ import { UsersService } from './services/users.service';
 export class AppComponent {
   
   imgParent = '';
-  token = '';
+ // token = '';
  
 
 
@@ -40,19 +40,21 @@ export class AppComponent {
   }
 
 
+  // La funcionabilidad de este metodo y getProfile ahora esta en el nav.component.ts y nav.component.html
+  // por lo cual eliminare de app.component.html los respectivos botones de login() y getProfile()
   login() {
-    this.authService.login('jairo@mail.com','1212')
-    .subscribe(rta => {
-      console.log(rta.access_token);
-      this.token = rta.access_token;
-    });
+    // this.authService.login('jairo@mail.com','1212')
+    // .subscribe(rta => {
+    //   console.log(rta.access_token);
+    //   this.token = rta.access_token;
+    // });
   }
 
   getProfile() {
-    this.authService.profile(this.token)
-    .subscribe(profile => {
-      console.log(profile);
-    });
+    // this.authService.profile(this.token)
+    // .subscribe(profile => {
+    //   console.log(profile);
+    // });
   }
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
+
 
 import { StoreService } from '../../services/store.service';
 
@@ -11,9 +14,11 @@ export class NavComponent implements OnInit {
 
   activeMenu = false;
   counter = 0;
+  profile: User | null = null;
 
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +30,13 @@ export class NavComponent implements OnInit {
 
   toogleMenu() {
     this.activeMenu = !this.activeMenu;
+  }
+
+  login(){
+    this.authService.loginAndGet('jairo@mail.com','1212')
+    .subscribe(user => {
+      this.profile = user;
+    });
   }
 
 }
