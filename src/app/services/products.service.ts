@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Product, CreateProductDTO, UpdateProductDTO } from './../models/product.model';
 import { throwError } from 'rxjs';
 import { isNgTemplate } from '@angular/compiler';
+import { checkTime } from '../interceptores/time.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class ProductsService {
       // Tipa el tipo de objetos que devolvera la solicitud
       
       //return this.http.get<Product[]>('https://fakestoreapi.com/products');
-      return this.http.get<Product[]>(this.apiUrl, { params })
+      return this.http.get<Product[]>(this.apiUrl, { params, context: checkTime() })
       .pipe(
         map(products => products.map(item => {
           return {
@@ -66,7 +67,7 @@ export class ProductsService {
 
     getProductsByPage(limit: number, offset: number) {
       return this.http.get<Product[]>(`${this.apiUrl}`, {
-        params: { limit, offset }
+        params: { limit, offset }, context: checkTime()
       })
       .pipe(
         map(products => products.map(item => {
