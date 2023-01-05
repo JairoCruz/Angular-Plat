@@ -8,6 +8,10 @@
 <p>
     <button (click)="downloadPdf()">Descargar PDF</button>
 </p>
+<p>
+    <input type="file" (change)="onUpload($event)">
+    <img *ngIf="imgRta" [src]="imgRta" alt="">
+</p>
 <!-- La funcionabilidad de estos botones pasa ahora a nav.component.ts y nav.component.html -->
 <!-- <button (click)="login()">Login</button>
 <button (click)="getProfile()">Get Profile</button> -->
