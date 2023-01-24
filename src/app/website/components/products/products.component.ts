@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Product, CreateProductDTO, UpdateProductDTO } from '../../models/product.model';
+import { Product, CreateProductDTO, UpdateProductDTO } from '../../../models/product.model';
 
 import { StoreService } from 'src/app/services/store.service';
 
