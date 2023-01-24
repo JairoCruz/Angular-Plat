@@ -6,5 +6,6 @@
 <p>{{ product.title }}</p>
 <P>{{ product.description }}</P>
 <P>{{ product.taxes | currency: 'USD' }}</P>
-<button (click)="onShowDetail()">Ver detalle</button>
+<!-- <button (click)="onShowDetail()">Ver detalle</button> -->
+<a routerLink="." [queryParams]="{product: product.id}">Ver Detalle</a>
 <button (click)="onAddToCart()">Add cart</button>

@@ -40,7 +40,10 @@ export class ProductsComponent {
     this.statusDetail = 'loading';
     // Esto es de muestra para ver el error que se muestra al enviar
     // un id diferente
-    this.toggleProductDetail();
+    //this.toggleProductDetail();
+    if(!this.showProductDetail) {
+      this.showProductDetail = true;
+    }
     this.productsService.getProduct(id)
       .subscribe(data => {
         this.productChosen = data;
@@ -119,6 +122,16 @@ export class ProductsComponent {
   @Input() products: Product[] = [];
 
   @Output() loadMore = new EventEmitter();
+
+  // @Input() productId: string | null = null;
+
+  @Input()
+  set productId(id: string | null) {
+    if (id){
+      this.onShowDetail(id);
+    }
+    
+  };
 
   showProductDetail = false;
 
