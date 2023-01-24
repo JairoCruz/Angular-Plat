@@ -22,6 +22,7 @@ import { LoginComponent } from './website/pages/login/login.component';
 import { RegisterComponent } from './website/pages/register/register.component';
 import { RecoveryComponent } from './website/pages/recovery/recovery.component';
 import { ProfileComponent } from './website/pages/profile/profile.component';
+import { LayoutComponent } from './website/components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProfileComponent } from './website/pages/profile/profile.component';
     RegisterComponent,
     RecoveryComponent,
     ProfileComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
