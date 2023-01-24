@@ -1,5 +1,7 @@
 <!--<img width="200" [src]="product.image" alt="">-->
-<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<a [routerLink]="['/product', product.id]">
+    <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+</a>
 <h2>{{ product.price | currency: 'USD' }}</h2>
 <p>{{ product.title }}</p>
 <P>{{ product.description }}</P>

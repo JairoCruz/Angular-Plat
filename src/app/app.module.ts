@@ -13,6 +13,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TimeInterceptor } from './interceptores/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CategoryComponent } from './pages/category/category.component';
@@ -36,7 +37,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     RecoveryComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
