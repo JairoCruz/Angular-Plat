@@ -11,6 +11,10 @@ import { AppComponent } from './app.component';
 import { TimeInterceptor } from './interceptores/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
+import { QuicklinkModule } from 'ngx-quicklink';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +25,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    QuicklinkModule,
     
   ],
   providers: [
