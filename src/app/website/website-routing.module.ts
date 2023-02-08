@@ -12,6 +12,8 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -36,6 +38,27 @@ const routes: Routes = [
        {
         path: 'product/:id',
         component: ProductDetailComponent
+       },
+       {
+        path: 'my-cart',
+        component: MyCartComponent
+       },
+       {
+        path: 'login',
+        component: LoginComponent
+       },
+       {
+        path: 'register',
+        component: RegisterComponent
+       },
+       {
+        path: 'recovery',
+        component: RecoveryComponent
+       },
+       {
+        path: 'profile',
+        canActivate: [ AuthGuard ],
+        component: ProfileComponent
        },
     ]
   },

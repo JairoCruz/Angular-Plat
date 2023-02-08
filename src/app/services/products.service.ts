@@ -14,7 +14,7 @@ import { checkTime } from '../interceptores/time.interceptor';
 export class ProductsService {
 
   //private apiUrl = 'https://young-sands-07814.herokuapp.com/api/products';
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api';
+  private apiUrl = 'https://api.escuelajs.co/api/v1';
 
   constructor(
     // Esta es un inyecion de dependencias

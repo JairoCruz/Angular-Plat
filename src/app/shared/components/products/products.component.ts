@@ -6,6 +6,8 @@ import { StoreService } from 'src/app/services/store.service';
 
 import { ProductsService } from 'src/app/services/products.service';
 
+import { UsersService } from 'src/app/services/users.service';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,11 +15,22 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductsComponent {
 
-  constructor(private storeService: StoreService, private productsService: ProductsService) {
+  constructor(private storeService: StoreService, private productsService: ProductsService, private userService: UsersService) {
     this.myShoppingCart = this.storeService.getShoppingCart();
    }
 
-   
+   createUser() {
+    this.userService.create({
+      email: 'jairo@mail.com',
+      name: 'jairo',
+      password: '1212',
+      role: 'customer',
+      avatar: "https://api.lorem.space/image/face?w=640&h=480&r=867",
+    })
+    .subscribe(rta => {
+      console.log(rta);
+    });
+  }
 
 
   onAddToShoppingCart(product: Product) {

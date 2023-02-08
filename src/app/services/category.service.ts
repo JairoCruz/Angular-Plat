@@ -8,7 +8,7 @@ import { Category } from './../models/category.model';
 })
 export class CategoryService {
 
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/categories';
+  private apiUrl = 'https://api.escuelajs.co/api/v1/categories';
 
   constructor(
     private http: HttpClient

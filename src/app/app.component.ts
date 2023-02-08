@@ -35,7 +35,9 @@ export class AppComponent {
     this.userService.create({
       name: 'jairo',
       email: 'jairo@mail.com',
-      password: '1212'
+      password: '1212',
+      role: 'customer',
+      avatar: "https://api.lorem.space/image/face?w=640&h=480&r=867",
     })
     .subscribe(rta => {
       console.log(rta);

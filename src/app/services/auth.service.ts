@@ -12,7 +12,7 @@ import { switchMap, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://young-sands-07814.herokuapp.com/api/auth';
+  private apiUrl = 'https://api.escuelajs.co/api/v1/auth';
 
   constructor(
     private http: HttpClient,
