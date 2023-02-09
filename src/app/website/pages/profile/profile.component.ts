@@ -16,7 +16,8 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.profile()
+    // Al tener ya un estado de login puedo cambiar profile() por observador
+    this.authService.user$
     .subscribe(data => {
       this.user = data;
     });

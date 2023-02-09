@@ -35,6 +35,10 @@ export class NavComponent implements OnInit {
     });
 
     this.getAllCategories();
+    this.authService.user$
+    .subscribe(data => {
+      this.profile = data;
+    });
   }
 
   toogleMenu() {
@@ -43,8 +47,8 @@ export class NavComponent implements OnInit {
 
   login(){
     this.authService.loginAndGet('jairo@mail.com','1212')
-    .subscribe(user => {
-      this.profile = user;
+    .subscribe(() => {
+      this.router.navigate(['/profile']);
     });
   }
 

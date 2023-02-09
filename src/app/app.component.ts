@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MinValidator } from '@angular/forms';
 
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { FilesService } from './services/files.service';
+import { TokenService } from './services/token.service';
 
 
 
@@ -12,7 +13,7 @@ import { FilesService } from './services/files.service';
   template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
   imgParent = '';
  // token = '';
@@ -25,7 +26,19 @@ export class AppComponent {
     private authService: AuthService,
     private userService: UsersService,
     private filesService: FilesService,
+    private tokenService: TokenService
   ) {}
+
+
+
+  ngOnInit(): void {
+    const token = this.tokenService.getToken();
+    if (token) {
+      this.authService.profile()
+      .subscribe()
+    }
+  }
+
 
   onLoaded(img: string) {
     console.log('log desde el padre', img);
