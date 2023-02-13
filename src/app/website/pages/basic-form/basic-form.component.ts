@@ -13,8 +13,11 @@ export class BasicFormComponent implements OnInit {
   phoneField = new FormControl('');
   colorField = new FormControl('');
   dateField = new FormControl('');
+
   categoryField = new FormControl('');
   tagField = new FormControl('');
+
+  agreeField = new FormControl('false');
 
   constructor() { }
 
