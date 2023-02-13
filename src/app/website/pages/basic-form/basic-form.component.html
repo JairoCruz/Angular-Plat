@@ -22,3 +22,21 @@
     Date: {{ dateField.value }}
     <input type="date" [formControl]="dateField">
 </p>
+
+<p>
+    Category: {{ categoryField.value }}
+    <select [formControl]="categoryField">
+        <option value="category-1">Category 1</option>
+        <option value="category-2">Category 2</option>
+        <option value="category-3">Category 3</option>
+    </select>
+</p>
+
+<p>
+    Tag: {{ tagField.value }}
+    <select [formControl]="tagField" multiple>
+        <option value="category-1">tag 1</option>
+        <option value="category-2">tag 2</option>
+        <option value="category-3">tag 3</option>
+    </select>
+</p>
