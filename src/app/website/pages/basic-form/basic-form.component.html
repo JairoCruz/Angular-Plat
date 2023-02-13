@@ -1,3 +1,24 @@
 <p>
+    Name: {{ nameField.value }}
     <input type="text" [formControl]="nameField">
+</p>
+
+<p>
+    Email: {{ emailField.value }}
+    <input type="email" [formControl]="emailField">
+</p>
+
+<p>s
+    Email: {{ phoneField.value }}
+    <input type="tel" [formControl]="phoneField">
+</p>
+
+<p>
+    Color: {{ colorField.value }}
+    <input type="color" [formControl]="colorField">
+</p>
+
+<p>
+    Date: {{ dateField.value }}
+    <input type="date" [formControl]="dateField">
 </p>
