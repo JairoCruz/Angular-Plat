@@ -1,6 +1,15 @@
 <p>
-    Name: {{ nameField.value }}
+    Name: {{ nameField.value }} {{ nameField.valid }}
     <input type="text" [formControl]="nameField">
+    <button [disabled]="nameField.invalid">Get value</button>
+</p>
+
+<p>
+    <strong *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido</strong>
+</p>
+
+<p>
+    <strong *ngIf="nameField.touched && nameField.hasError('maxlength')">Solo son 10 caracteres</strong>
 </p>
 
 <p>
