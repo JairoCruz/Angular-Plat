@@ -1,64 +1,66 @@
-<p>
-    Name: {{ nameField.valid }}
-    <input
-    [class.is-valid]="isNameFieldValid"
-    [class.is-invalid]="isNameFieldInvalid"
-     type="text"
-     [formControl]="nameField">
-    <button [disabled]="nameField.invalid">Get value</button>
-</p>
-
-<div class="messages" [class.active]="nameField.touched && nameField.invalid">
+<form [formGroup]="form" (ngSubmit)="save()">
 
     <p>
-        <strong *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido</strong>
+        Name: {{ nameForm?.valid }}
+        <input
+        [class.is-valid]="isNamedValid"
+        [class.is-invalid]="isNameInvalid"
+         type="text"
+         formControlName="name">
+        <button [disabled]="form.get('name')?.invalid">Get value</button>
+    </p>
+
+
+    <div class="messages" [class.active]="nameForm?.touched && nameForm?.invalid">
+
+        <p>
+            <strong *ngIf="nameForm?.touched && nameForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="nameForm?.touched && nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
+        </p>
+    
+    </div>
+
+    <p>
+        Email: {{ emailForm?.value }}
+        <input type="email" formControlName="email">
     </p>
     
     <p>
-        <strong *ngIf="nameField.touched && nameField.hasError('maxlength')">Solo son 10 caracteres</strong>
+        Color: {{ colorForm?.value }}
+        <input type="color" formControlName="color">
+    </p>
+    
+    <p>
+        Date: {{ dateForm?.value }}
+        <input type="date" formControlName="date">
+    </p>
+    
+    <p>
+        Category: {{ categoryForm?.value }}
+        <select formControlName="category">
+            <option value="category-1">Category 1</option>
+            <option value="category-2">Category 2</option>
+            <option value="category-3">Category 3</option>
+        </select>
+    </p>
+    
+    <p>
+        Tag: {{ tagForm?.value }}
+        <select formControlName="tag" multiple>
+            <option value="category-1">tag 1</option>
+            <option value="category-2">tag 2</option>
+            <option value="category-3">tag 3</option>
+        </select>
+    </p>
+    
+    <p>
+        Agree: {{ agreeForm?.value }}
+        <input type="checkbox" formControlName="agree">
     </p>
 
-</div>
+    <button type="submit">Enviar</button>
 
-<p>
-    Email: {{ emailField.value }}
-    <input type="email" [formControl]="emailField">
-</p>
-
-<p>s
-    Email: {{ phoneField.value }}
-    <input type="tel" [formControl]="phoneField">
-</p>
-
-<p>
-    Color: {{ colorField.value }}
-    <input type="color" [formControl]="colorField">
-</p>
-
-<p>
-    Date: {{ dateField.value }}
-    <input type="date" [formControl]="dateField">
-</p>
-
-<p>
-    Category: {{ categoryField.value }}
-    <select [formControl]="categoryField">
-        <option value="category-1">Category 1</option>
-        <option value="category-2">Category 2</option>
-        <option value="category-3">Category 3</option>
-    </select>
-</p>
-
-<p>
-    Tag: {{ tagField.value }}
-    <select [formControl]="tagField" multiple>
-        <option value="category-1">tag 1</option>
-        <option value="category-2">tag 2</option>
-        <option value="category-3">tag 3</option>
-    </select>
-</p>
-
-<p>
-    Agree: {{ agreeField.value }}
-    <input type="checkbox" [formControl]="agreeField">
-</p>
+</form>
