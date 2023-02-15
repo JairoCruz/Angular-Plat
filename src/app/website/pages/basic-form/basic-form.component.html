@@ -18,7 +18,11 @@
         </p>
         
         <p>
-            <strong *ngIf="nameForm?.touched && nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
+            <strong *ngIf="nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
+        </p>
+
+        <p>
+            <strong *ngIf="nameForm?.hasError('pattern')">No debe tener caracteres especiales</strong>
         </p>
     
     </div>
@@ -27,11 +31,31 @@
         Email: {{ emailForm?.value }}
         <input type="email" formControlName="email">
     </p>
+
+    <div class="messages" [class.active]="emailForm?.touched && emailForm?.invalid">
+
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('email')">Solo email validos</strong>
+        </p>
+    
+    </div>
     
     <p>
         Phone: {{ phoneForm?.value }}
         <input type="number" formControlName="phone">
     </p>
+
+    <div class="messages" [class.active]="phoneForm?.touched && phoneForm?.invalid">
+
+        <p>
+            <strong *ngIf="phoneForm?.touched && phoneForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+
+    </div>
 
     <p>
         Color: {{ colorForm?.value }}
@@ -65,6 +89,14 @@
         Agree: {{ agreeForm?.value }}
         <input type="checkbox" formControlName="agree">
     </p>
+
+    <div class="messages" [class.active]="tagForm?.touched && tagForm?.invalid">
+
+        <p>
+            <strong *ngIf="tagForm?.touched && tagForm?.hasError('required')">Debe aceptar los terminos</strong>
+        </p>
+    
+    </div>
 
     <!-- <button [disabled]="form.invalid" type="submit">Enviar</button> -->
     <button  type="submit">Enviar</button>

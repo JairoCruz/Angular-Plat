@@ -12,14 +12,14 @@ export class BasicFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(10)]],
-      email: [''],
+      name: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]],
+      email: ['',[Validators.required, Validators.email]],
       phone: ['', Validators.required],
       color: [''],
       date: [''],
       category: [''],
       tag: [''],
-      agree: [false],
+      agree: [false, [Validators.requiredTrue]],
     });
   }
 
