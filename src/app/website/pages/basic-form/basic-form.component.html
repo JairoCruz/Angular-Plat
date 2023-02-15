@@ -29,6 +29,11 @@
     </p>
     
     <p>
+        Phone: {{ phoneForm?.value }}
+        <input type="number" formControlName="phone">
+    </p>
+
+    <p>
         Color: {{ colorForm?.value }}
         <input type="color" formControlName="color">
     </p>
@@ -61,6 +66,7 @@
         <input type="checkbox" formControlName="agree">
     </p>
 
-    <button type="submit">Enviar</button>
+    <!-- <button [disabled]="form.invalid" type="submit">Enviar</button> -->
+    <button  type="submit">Enviar</button>
 
 </form>
