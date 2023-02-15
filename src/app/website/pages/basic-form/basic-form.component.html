@@ -1,31 +1,63 @@
 <form [formGroup]="form" (ngSubmit)="save()">
 
-    <p>
-        Name: {{ nameForm?.valid }}
-        <input
-        [class.is-valid]="isNamedValid"
-        [class.is-invalid]="isNameInvalid"
-         type="text"
-         formControlName="name">
-        <button [disabled]="form.get('name')?.invalid">Get value</button>
-    </p>
-
-
-    <div class="messages" [class.active]="nameForm?.touched && nameForm?.invalid">
+    <div formGroupName="fullName">
 
         <p>
-            <strong *ngIf="nameForm?.touched && nameForm?.hasError('required')">Este campo es requerido</strong>
-        </p>
-        
-        <p>
-            <strong *ngIf="nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
-        </p>
-
-        <p>
-            <strong *ngIf="nameForm?.hasError('pattern')">No debe tener caracteres especiales</strong>
+            Name: {{ nameForm?.valid }}
+            <input
+            [class.is-valid]="isNamedValid"
+            [class.is-invalid]="isNameInvalid"
+             type="text"
+             formControlName="name">
+            <button [disabled]="form.get('name')?.invalid">Get value</button>
         </p>
     
+    
+        <div class="messages" [class.active]="nameForm?.touched && nameForm?.invalid">
+    
+            <p>
+                <strong *ngIf="nameForm?.touched && nameForm?.hasError('required')">Este campo es requerido</strong>
+            </p>
+            
+            <p>
+                <strong *ngIf="nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
+            </p>
+    
+            <p>
+                <strong *ngIf="nameForm?.hasError('pattern')">No debe tener caracteres especiales</strong>
+            </p>
+        
+        </div>
+
+        <p>
+            Last: {{ lastForm?.valid }}
+            <input
+            [class.is-valid]="isLastValid"
+            [class.is-invalid]="isLastInvalid"
+             type="text"
+             formControlName="last">
+        </p>
+
+        <div class="messages" [class.active]="lastForm?.touched && lastForm?.invalid">
+    
+            <p>
+                <strong *ngIf="lastForm?.touched && lastForm?.hasError('required')">Este campo es requerido</strong>
+            </p>
+            
+            <p>
+                <strong *ngIf="lastForm?.hasError('maxlength')">Solo son 5 caracteres</strong>
+            </p>
+    
+            <p>
+                <strong *ngIf="lastForm?.hasError('pattern')">el last debe tener caracteres especiales</strong>
+            </p>
+        
+        </div>
+
+
     </div>
+
+    
 
     <p>
         Email: {{ emailForm?.value }}

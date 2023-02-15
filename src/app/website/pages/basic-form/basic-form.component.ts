@@ -12,7 +12,10 @@ export class BasicFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]],
+      fullName: this.formBuilder.group({
+        name: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]],
+        last: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]]
+      }),
       email: ['',[Validators.required, Validators.email]],
       phone: ['', Validators.required],
       color: [''],
@@ -73,16 +76,28 @@ export class BasicFormComponent implements OnInit {
   } */
 
   get isNamedValid() {
-    return this.form.get('name')?.touched && this.form.get('name')?.valid;
+    return this.form.get('fullName')?.get('name')?.touched && this.form.get('name')?.valid;
   }
 
   get isNameInvalid() {
-    return this.form.get('name')?.touched && this.form.get('name')?.invalid;;
+    return this.form.get('fullName')?.get('name')?.touched && this.form.get('name')?.invalid;;
+  }
+
+  get isLastValid() {
+    return this.form.get('fullName')?.get('last')?.touched && this.form.get('name')?.valid;
+  }
+
+  get isLastInvalid() {
+    return this.form.get('fullName')?.get('last')?.touched && this.form.get('name')?.invalid;;
   }
 
   get nameForm () {
-    return this.form.get('name');
+    return this.form.get('fullName')?.get('name');
   } 
+
+  get lastForm() {
+    return this.form.get('fullName')?.get('last');
+  }
 
   get emailForm () {
     return this.form.get('email');
