@@ -135,6 +135,30 @@
     
     </div>
 
+    <p>
+        Password:
+        <input type="password"
+         formControlName="password"
+         [class.is-valid]="isPasswordValid"
+         [class.is-invalid]="isPasswordInvalid">
+    </p>
+
+    <div class="messages" [class.active]="passwordForm?.touched && passwordForm?.invalid">
+
+        <p>
+            <strong *ngIf="passwordForm?.touched && passwordForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="passwordForm?.touched && passwordForm?.hasError('maxlength')">mas corto</strong>
+        </p>
+
+        <p>
+            <strong *ngIf="passwordForm?.hasError('invalid_password')">necesita un numero</strong>
+        </p>
+    
+    </div>
+
     <!-- <button [disabled]="form.invalid" type="submit">Enviar</button> -->
     <button  type="submit">Enviar</button>
 

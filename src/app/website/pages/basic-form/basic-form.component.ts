@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
+import { MyValidators } from 'src/app/utils/validators';
+
 @Component({
   selector: 'app-basic-form',
   templateUrl: './basic-form.component.html',
@@ -23,6 +25,7 @@ export class BasicFormComponent implements OnInit {
       category: [''],
       tag: [''],
       agree: [false, [Validators.requiredTrue]],
+      password: ['', [Validators.required, Validators.maxLength(10), MyValidators.validPassword]]
     });
   }
 
@@ -83,12 +86,21 @@ export class BasicFormComponent implements OnInit {
     return this.form.get('fullName')?.get('name')?.touched && this.form.get('name')?.invalid;;
   }
 
+  get isPasswordValid() {
+    return this.form.get('password')?.touched && this.form.get('password')?.valid;
+  }
+
+  get isPasswordInvalid() {
+    return this.form.get('password')?.touched && this.form.get('password')?.invalid;;
+  }
+
+
   get isLastValid() {
-    return this.form.get('fullName')?.get('last')?.touched && this.form.get('name')?.valid;
+    return this.form.get('fullName')?.get('last')?.touched &&this.form.get('fullName')?.get('last')?.valid;
   }
 
   get isLastInvalid() {
-    return this.form.get('fullName')?.get('last')?.touched && this.form.get('name')?.invalid;;
+    return this.form.get('fullName')?.get('last')?.touched && this.form.get('fullName')?.get('last')?.invalid;;
   }
 
   get nameForm () {
@@ -126,5 +138,9 @@ export class BasicFormComponent implements OnInit {
   get agreeForm () {
     return this.form.get('agree');
   } 
+
+  get passwordForm () {
+    return this.form.get('password');
+  }
 
 }
