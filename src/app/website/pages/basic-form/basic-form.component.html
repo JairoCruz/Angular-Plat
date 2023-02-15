@@ -2,15 +2,20 @@
 
     <div formGroupName="fullName">
 
-        <p>
-            Name: {{ nameForm?.valid }}
-            <input
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input
+            class="input"
             [class.is-valid]="isNamedValid"
             [class.is-invalid]="isNameInvalid"
              type="text"
+             placeholder="Input Name"
              formControlName="name">
+            </div>
+            
             <button [disabled]="form.get('name')?.invalid">Get value</button>
-        </p>
+        </div>
     
     
         <div class="messages" [class.active]="nameForm?.touched && nameForm?.invalid">
