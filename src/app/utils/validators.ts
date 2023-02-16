@@ -10,6 +10,18 @@ export class MyValidators {
         return null;
       }
 
+      static matchPasswords(control: AbstractControl) {
+        const password = control.get('password')?.value;
+        const confirmPassword = control.get('confirmPassword')?.value;
+
+        if (password === confirmPassword) {
+          // si todo esta bien se devuelve un null
+          return null;
+        }
+        // si hay algun error se manda un objeto con un nombre y su respectivo valor a true
+        return { match_password: true}
+      }
+
 }
 
 function containsNumber(value: string){

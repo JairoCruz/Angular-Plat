@@ -25,7 +25,11 @@ export class BasicFormComponent implements OnInit {
       category: [''],
       tag: [''],
       agree: [false, [Validators.requiredTrue]],
-      password: ['', [Validators.required, Validators.maxLength(10), MyValidators.validPassword]]
+      password: ['', [Validators.required, Validators.maxLength(10), MyValidators.validPassword]],
+      confirmPassword: ['', [Validators.required]],
+    }, {
+      // Esto es validadores grupales
+      validators: MyValidators.matchPasswords
     });
   }
 
@@ -94,6 +98,13 @@ export class BasicFormComponent implements OnInit {
     return this.form.get('password')?.touched && this.form.get('password')?.invalid;;
   }
 
+  get isConfirmPasswordValid() {
+    return this.form.get('confirmPassword')?.touched && this.form.get('confirmPassword')?.valid;
+  }
+
+  get isConfirmPasswordInvalid() {
+    return this.form.get('confirmPassword')?.touched && this.form.get('confirmPassword')?.invalid;
+  }
 
   get isLastValid() {
     return this.form.get('fullName')?.get('last')?.touched &&this.form.get('fullName')?.get('last')?.valid;
@@ -141,6 +152,10 @@ export class BasicFormComponent implements OnInit {
 
   get passwordForm () {
     return this.form.get('password');
+  }
+
+  get confirmPasswordForm () {
+    return this.form.get('confirmPassword');
   }
 
 }

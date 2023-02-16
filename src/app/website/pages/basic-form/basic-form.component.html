@@ -159,6 +159,22 @@
     
     </div>
 
+    <p>
+        Confirm password:
+        <input type="password"
+         formControlName="confirmPassword"
+         [class.is-valid]="isConfirmPasswordValid"
+         [class.is-invalid]="isConfirmPasswordInvalid">
+    </p>
+
+    <div class="messages" [class.active]="confirmPasswordForm?.touched && form.errors">
+
+        <p>
+            <strong *ngIf="form.hasError('match_password')">No coinciden las contraseñas</strong>
+        </p>
+        
+    </div>
+
     <!-- <button [disabled]="form.invalid" type="submit">Enviar</button> -->
     <button  type="submit">Enviar</button>
 
