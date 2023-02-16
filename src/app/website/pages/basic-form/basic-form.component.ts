@@ -27,10 +27,24 @@ export class BasicFormComponent implements OnInit {
       agree: [false, [Validators.requiredTrue]],
       password: ['', [Validators.required, Validators.maxLength(10), MyValidators.validPassword]],
       confirmPassword: ['', [Validators.required]],
+      type: ['company', [Validators.required]],
+      companyName: ['', [Validators.required]],
     }, {
       // Esto es validadores grupales
       validators: MyValidators.matchPasswords
     });
+
+    this.typeForm?.valueChanges
+    .subscribe(value => {
+      console.log(value);
+      if (value === 'company') {
+        this.companyNameForm?.setValidators([Validators.required]);
+      } else {
+        this.companyNameForm?.setValidators(null);
+      }
+      this.companyNameForm?.updateValueAndValidity();
+    });
+
   }
 
   
@@ -156,6 +170,14 @@ export class BasicFormComponent implements OnInit {
 
   get confirmPasswordForm () {
     return this.form.get('confirmPassword');
+  }
+
+  get typeForm () {
+    return this.form.get('type');
+  }
+
+  get companyNameForm () {
+    return this.form.get('companyName');
   }
 
 }
