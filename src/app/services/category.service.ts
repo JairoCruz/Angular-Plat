@@ -25,4 +25,12 @@ export class CategoryService {
     }
 
 
+    createCategory(data: Partial<Category>) {
+      return this.http.post<Category>(this.apiUrl, data);
+    }
+
+    updateCategory(id: string, data: Partial<Category>) {
+      return this.http.put<Category>(this.apiUrl, data);
+    }
+
 }
