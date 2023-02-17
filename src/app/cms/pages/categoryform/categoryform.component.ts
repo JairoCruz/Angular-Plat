@@ -46,6 +46,10 @@ export class CategoryformComponent implements OnInit {
     this.categoryService.createCategory(data)
     .subscribe(rta => {
       console.log(rta);
+      // En este lugar debia haber puesto el codigo
+      // para subir una imagen con firebase, para que firebase me
+      // brindara una url valida para poder mandar a la api.
+      // Estoy pendiente de implementar esa funcionabilidad con firebase
       this.router.navigate(['./home']);
     });
   }
