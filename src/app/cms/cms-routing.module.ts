@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { GridComponent } from './pages/grid/grid.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CategoryformComponent } from './pages/categoryform/categoryform.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'tasks',
         component: TasksComponent
+      },
+      {
+        path: 'category-form',
+        component: CategoryformComponent
       }
     ]
   }
