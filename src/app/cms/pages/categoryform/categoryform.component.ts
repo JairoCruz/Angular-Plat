@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CategoryService } from 'src/app/services/category.service';
+import { MyValidators } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-categoryform',
@@ -26,7 +27,7 @@ export class CategoryformComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required], MyValidators.validCategory(this.categoryService)],
       image:['', [Validators.required]],
     });
   }

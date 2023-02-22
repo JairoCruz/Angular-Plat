@@ -23,6 +23,7 @@
             </div>
             <div *ngIf="imageForm.touched && imageForm.invalid">
                 <p *ngIf="imageForm.hasError('required')" class="help is-danger">La imagen no puede quedar vacio</p>
+                <p *ngIf="imageForm.hasError('not_available')" class="help is-danger">ya existe esa categoria</p>
             </div>
         </div>
 
@@ -39,5 +40,5 @@
         </div>
 
     </form>
-    
+
 </div>

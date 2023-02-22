@@ -33,4 +33,8 @@ export class CategoryService {
       return this.http.put<Category>(this.apiUrl, data);
     }
 
+    checkCategory(name: string) {
+      return this.http.post(`${this.apiUrl}/availability`, { name });
+    }
+
 }
