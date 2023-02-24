@@ -15,10 +15,12 @@ import { QuicklinkModule } from 'ngx-quicklink';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { GridComponent } from './pages/grid/grid.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CategoryformComponent } from './pages/categoryform/categoryform.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CategoryformComponent } from './pages/categoryform/categoryform.compone
     TasksComponent,
     GridComponent,
     LayoutComponent,
-    CategoryformComponent
+    CategoryformComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,

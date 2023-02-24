@@ -30,11 +30,15 @@ export class CategoryService {
     }
 
     updateCategory(id: string, data: Partial<Category>) {
-      return this.http.put<Category>(this.apiUrl, data);
+      return this.http.put<Category>(`${this.apiUrl}/${id}`, data);
     }
 
     checkCategory(name: string) {
       return this.http.post(`${this.apiUrl}/availability`, { name });
+    }
+
+    getCategory(id: string) {
+      return this.http.get<Category>(`${this.apiUrl}/${id}`)
     }
 
 }
