@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { WebsiteRoutingModule } from './website-routing.module';
 
 import { SwiperModule } from 'swiper/angular';
@@ -19,6 +21,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { BasicFormComponent } from './pages/basic-form/basic-form.component';
 
 
 @NgModule({
@@ -32,13 +35,15 @@ import { SharedModule } from '../shared/shared.module';
     ProfileComponent,
     ProductDetailComponent,
     LayoutComponent,
+    BasicFormComponent,
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     SwiperModule,
     SharedModule,
-    QuicklinkModule
+    QuicklinkModule,
+    ReactiveFormsModule
   ]
 })
 export class WebsiteModule { }

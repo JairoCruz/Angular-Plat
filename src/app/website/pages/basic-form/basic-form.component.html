@@ -1,0 +1,216 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+
+    <div formGroupName="fullName">
+
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input
+            class="input"
+            [class.is-valid]="isNamedValid"
+            [class.is-invalid]="isNameInvalid"
+             type="text"
+             placeholder="Input Name"
+             formControlName="name">
+            </div>
+            
+            <button [disabled]="form.get('name')?.invalid">Get value</button>
+        </div>
+    
+    
+        <div class="messages" [class.active]="nameForm?.touched && nameForm?.invalid">
+    
+            <p>
+                <strong *ngIf="nameForm?.touched && nameForm?.hasError('required')">Este campo es requerido</strong>
+            </p>
+            
+            <p>
+                <strong *ngIf="nameForm?.hasError('maxlength')">Solo son 10 caracteres</strong>
+            </p>
+    
+            <p>
+                <strong *ngIf="nameForm?.hasError('pattern')">No debe tener caracteres especiales</strong>
+            </p>
+        
+        </div>
+
+        <p>
+            Last: {{ lastForm?.valid }}
+            <input
+            [class.is-valid]="isLastValid"
+            [class.is-invalid]="isLastInvalid"
+             type="text"
+             formControlName="last">
+        </p>
+
+        <div class="messages" [class.active]="lastForm?.touched && lastForm?.invalid">
+    
+            <p>
+                <strong *ngIf="lastForm?.touched && lastForm?.hasError('required')">Este campo es requerido</strong>
+            </p>
+            
+            <p>
+                <strong *ngIf="lastForm?.hasError('maxlength')">Solo son 5 caracteres</strong>
+            </p>
+    
+            <p>
+                <strong *ngIf="lastForm?.hasError('pattern')">el last debe tener caracteres especiales</strong>
+            </p>
+        
+        </div>
+
+
+    </div>
+
+    
+
+    <p>
+        Email: {{ emailForm?.value }}
+        <input type="email" formControlName="email">
+    </p>
+
+    <div class="messages" [class.active]="emailForm?.touched && emailForm?.invalid">
+
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('email')">Solo email validos</strong>
+        </p>
+    
+    </div>
+    
+    <p>
+        Phone: {{ phoneForm?.value }}
+        <input type="number" formControlName="phone">
+    </p>
+
+    <div class="messages" [class.active]="phoneForm?.touched && phoneForm?.invalid">
+
+        <p>
+            <strong *ngIf="phoneForm?.touched && phoneForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+
+    </div>
+
+    <p>
+        Color: {{ colorForm?.value }}
+        <input type="color" formControlName="color">
+    </p>
+    
+    <p>
+        Date: {{ dateForm?.value }}
+        <input type="date" formControlName="date">
+    </p>
+    
+    <p>
+        Category: {{ categoryForm?.value }}
+        <select formControlName="category">
+            <option value="category-1">Category 1</option>
+            <option value="category-2">Category 2</option>
+            <option value="category-3">Category 3</option>
+        </select>
+    </p>
+    
+    <p>
+        Tag: {{ tagForm?.value }}
+        <select formControlName="tag" multiple>
+            <option value="category-1">tag 1</option>
+            <option value="category-2">tag 2</option>
+            <option value="category-3">tag 3</option>
+        </select>
+    </p>
+    
+    <p>
+        Agree: {{ agreeForm?.value }}
+        <input type="checkbox" formControlName="agree">
+    </p>
+
+    <div class="messages" [class.active]="tagForm?.touched && tagForm?.invalid">
+
+        <p>
+            <strong *ngIf="tagForm?.touched && tagForm?.hasError('required')">Debe aceptar los terminos</strong>
+        </p>
+    
+    </div>
+
+    <p>
+        Password:
+        <input type="password"
+         formControlName="password"
+         [class.is-valid]="isPasswordValid"
+         [class.is-invalid]="isPasswordInvalid">
+    </p>
+
+    <div class="messages" [class.active]="passwordForm?.touched && passwordForm?.invalid">
+
+        <p>
+            <strong *ngIf="passwordForm?.touched && passwordForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="passwordForm?.touched && passwordForm?.hasError('maxlength')">mas corto</strong>
+        </p>
+
+        <p>
+            <strong *ngIf="passwordForm?.hasError('invalid_password')">necesita un numero</strong>
+        </p>
+    
+    </div>
+
+    <p>
+        Confirm password:
+        <input type="password"
+         formControlName="confirmPassword"
+         [class.is-valid]="isConfirmPasswordValid"
+         [class.is-invalid]="isConfirmPasswordInvalid">
+    </p>
+
+    <div class="messages" [class.active]="confirmPasswordForm?.touched && form.errors">
+
+        <p>
+            <strong *ngIf="form.hasError('match_password')">No coinciden las contraseñas</strong>
+        </p>
+        
+    </div>
+
+
+    <p>
+        Typo:
+        <input type="radio" formControlName="type" value="company">Company
+        <input type="radio" formControlName="type" value="customer">Customer
+    </p>
+
+    <div class="messages" [class.active]="emailForm?.touched && emailForm?.invalid">
+
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('required')">Este campo es requerido</strong>
+        </p>
+        
+        <p>
+            <strong *ngIf="emailForm?.touched && emailForm?.hasError('email')">Solo email validos</strong>
+        </p>
+    
+    </div>
+
+
+    <p>
+        Company Name:
+        <input
+         type="text"
+         formControlName="companyName">
+    </p>
+
+    <div class="messages" [class.active]="companyNameForm?.touched && companyNameForm?.invalid">
+    
+        <p>
+            <strong *ngIf="companyNameForm?.touched && companyNameForm?.hasError('required')">Este nombre de compañia campo es requerido</strong>
+        </p>
+    
+    </div>
+
+    <!-- <button [disabled]="form.invalid" type="submit">Enviar</button> -->
+    <button  type="submit">Enviar</button>
+
+</form>

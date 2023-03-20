@@ -1,0 +1,47 @@
+<div class="container">
+    
+    <div class="block">
+        <h2>Registra una categoria</h2>
+    </div>
+    
+    <form [formGroup]="form" (ngSubmit)="save()">
+        
+        <div class="field">
+            <label for="" class="label">Name</label>
+            <div class="control">
+                <input type="text" formControlName="name" [ngClass]="{'input': true, 'is-danger': nameForm.touched && nameForm.invalid}" placeholder="category name">
+            </div>
+            <div *ngIf="nameForm.touched && nameForm.invalid">
+                <p *ngIf="nameForm.hasError('required')" class="help is-danger">El nombre no puede quedar vacio</p>
+            </div>
+        </div>
+        
+        <div class="field">
+            <label for="" class="label">Imagen</label>
+            <div class="control">
+                <input type="text" formControlName="image" [ngClass]="{'input': true, 'is-danger': imageForm.touched && imageForm.invalid}" placeholder="Imagen">
+            </div>
+            <div *ngIf="imageForm.touched && imageForm.invalid">
+                <p *ngIf="imageForm.hasError('required')" class="help is-danger">La imagen no puede quedar vacio</p>
+                <p *ngIf="imageForm.hasError('not_available')" class="help is-danger">ya existe esa categoria</p>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            
+            <div class="control">
+                <button class="button is-link">
+                    <span *ngIf="!categoryId">Create Categoria</span>
+                    <span *ngIf="categoryId">Update Categoria</span>
+                </button>
+            </div>
+
+            <div class="control">
+                <button class="button is-link is-light">Cancel</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
